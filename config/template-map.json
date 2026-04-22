@@ -1,0 +1,13 @@
+{
+  "default": "standard",
+  "templates": {
+    "standard": "templates/project-template",
+    "minimal": "templates/project-template-minimal",
+    "full": "templates/project-template-full"
+  },
+  "description": {
+    "standard": "标准项目模板，包含 brief / status / next-step / decision-log / README / handoff",
+    "minimal": "最小项目模板，仅包含 brief / status / next-step",
+    "full": "完整项目模板，包含标准模板全部内容 plus 额外 governance 文件"
+  }
+}
