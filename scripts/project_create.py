@@ -9,7 +9,32 @@ import re
 from datetime import date
 from pathlib import Path
 
-SHARED_ROOT = Path('/Volumes/Local Drawer/SharedProjects')
+SETTINGS_PATH = Path('config/settings.json')
+ROLE_MAP_PATH = Path('config/team-role-map.json')
+
+
+def load_settings() -> dict:
+    if SETTINGS_PATH.exists():
+        return json.loads(SETTINGS_PATH.read_text(encoding='utf-8'))
+    return {'shared_root': 'YOUR_SHARED_ROOT'}
+
+
+def load_role_map() -> dict:
+    if ROLE_MAP_PATH.exists():
+        return json.loads(ROLE_MAP_PATH.read_text(encoding='utf-8'))
+    return {
+        'coordinator': 'COORDINATOR',
+        'tech_lead': 'TECH_LEAD',
+        'finance_support': ['FINANCE_SUPPORT'],
+        'project_managers': {
+            'technical': 'TECH_PM',
+            'research_analysis': 'RESEARCH_PM',
+            'writing_integration': 'WRITING_PM'
+        }
+    }
+
+
+SHARED_ROOT = Path(load_settings().get('shared_root', 'YOUR_SHARED_ROOT'))
 ALLOWED_STATUS = {'planning', 'ready', 'in_progress', 'review', 'blocked', 'done'}
 
 
@@ -120,7 +145,7 @@ def render_handoff(project_id: str, pm_owner: str) -> str:
 
 ### next 2
 - action:
-- owner: qiang
+- owner: COORDINATOR
 - deliverable:
 - done_definition:
 
@@ -145,13 +170,13 @@ def render_brief(project_name: str, project_id: str, requester: str, pm_owner: s
 - project_id: {project_id}
 - created_at: {date.today().isoformat()}
 - requester: {requester}
-- coordinator: qiang
+- coordinator: COORDINATOR
 
 ## 2. project organization
 - pm_owner: {pm_owner}
 - pm_support: []
 - assistants: []
-- tech_lead: tracy
+- tech_lead: TECH_LEAD
 - finance_support: []
 
 ## 3. project goal
@@ -199,11 +224,11 @@ def render_status(project_name: str, project_id: str, pm_owner: str) -> dict:
     status = {
         'project_name': project_name,
         'project_id': project_id,
-        'coordinator': 'qiang',
+        'coordinator': 'COORDINATOR',
         'pm_owner': pm_owner,
         'pm_support': [],
         'assistants': [],
-        'tech_lead': 'tracy',
+        'tech_lead': 'TECH_LEAD',
         'finance_support': [],
         'status': 'planning',
         'current_task': '',
@@ -212,7 +237,7 @@ def render_status(project_name: str, project_id: str, pm_owner: str) -> dict:
         'blockers': [],
         'next_action': 'pm_owner reads mainline files and fills initial project details',
         'updated_at': date.today().isoformat(),
-        'updated_by': 'qiang'
+        'updated_by': 'COORDINATOR'
     }
     if status['status'] not in ALLOWED_STATUS:
         raise ValueError('invalid initial status')
@@ -238,7 +263,7 @@ def render_next_step(pm_owner: str) -> str:
 
 ## next 2
 - action: decide whether support roles or assistants are needed
-- owner: qiang
+- owner: COORDINATOR
 - deliverable: dispatch decision
 - done_definition: project organization is explicitly confirmed
 
@@ -281,7 +306,7 @@ def render_decision_log() -> str:
 
 ### record 001
 - time: {date.today().isoformat()}
-- recorded_by: qiang
+- recorded_by: COORDINATOR
 - topic: project initialization
 - original_plan: no shared-root project initialized yet
 - new_decision: initialize project under shared root with standard template

@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.1] - 2026-04-22
+
+### Changed
+- Public-ready standardization
+- Replaced real team member names with role placeholders
+- Replaced machine-specific paths with configurable placeholders
+- Added example config files (`team-role-map.example.json`, `settings.example.json`)
+- Removed internal Chinese documentation from public bundle
+- Updated README, SKILL.md, INSTALL.md to public-facing style
+- Updated scripts to read shared_root from config instead of hardcoding
+- Added public release checklist
+
 ## [1.0.0] - 2026-04-21
 
 ### Added
@@ -47,5 +59,6 @@ All notable changes to this project will be documented in this file.
 - Team role map
 - Shared projects bootstrap
 
-[1.0.0]: https://github.com/willq26/a2a-work-group-nxm/releases/tag/v1.0.0
-[0.1.0]: https://github.com/willq26/a2a-work-group-nxm/releases/tag/v0.1.0
+[1.0.1]: https://github.com/OWNER/a2a-work-group-nxm/releases/tag/v1.0.1
+[1.0.0]: https://github.com/OWNER/a2a-work-group-nxm/releases/tag/v1.0.0
+[0.1.0]: https://github.com/OWNER/a2a-work-group-nxm/releases/tag/v0.1.0

@@ -1,40 +1,47 @@
-# A2A work group nxm - 安装说明
+# A2A Work Group NXM - Installation Guide
 
-## 安装方式
+## Installation
 
-### 方式 1：直接复制到 OpenClaw skills 目录
+### Method 1: Direct Copy
 ```bash
 cp -r a2a-work-group-nxm ~/.openclaw/skills/
 ```
 
-### 方式 2：通过 OpenClaw CLI 安装（未来支持）
+### Method 2: OpenClaw CLI (Future)
 ```bash
 openclaw skills install a2a-work-group-nxm
 ```
 
-## 安装后验证
+## First-Time Setup
+```bash
+cp config/team-role-map.example.json config/team-role-map.json
+cp config/settings.example.json config/settings.json
+```
+
+## Verification
 ```bash
 python3 ~/.openclaw/skills/a2a-work-group-nxm/scripts/workgroup_cli.py \
   --project-name "test" \
   --shortname "test" \
-  --requester "will" \
+  --requester "USER" \
   --task-type "research" \
-  --session-key "agent:mr-library:discord:channel:1480155817952153651" \
-  --task-id "test-20260421-01" \
+  --session-key "agent:PM_AGENT:discord:channel:CHANNEL_ID" \
+  --task-id "test-20260422-01" \
   --request-summary "test installation"
 ```
 
-## 依赖
+## Requirements
 - Python >= 3.9
 - OpenClaw >= 2026.4.15
-- 共享根目录 `/Volumes/Local Drawer/SharedProjects/` 已存在
+- Shared root directory configured by user
 
-## 配置
-- `config/team-role-map.json`：团队角色映射
-- `config/template-map.json`：项目模板选择
-- `skill.json`：skill 元数据
+## Configuration
+- `config/team-role-map.json`: Team role mapping
+- `config/settings.json`: Local settings
+- `config/template-map.json`: Template selection
+- `skill.json`: Skill metadata
 
-## 权限要求
+## Permissions Required
 - `sessions.send`
 - `sessions.get`
 - `sessions.list`

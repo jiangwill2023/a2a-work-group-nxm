@@ -6,8 +6,8 @@ from __future__ import annotations
 from pathlib import Path
 import shutil
 
-SRC = Path('/Users/admin-ai/.openclaw/workspace-qiang')
-DEST = Path('/Volumes/Local Drawer/SharedProjects/_system')
+SRC = Path('YOUR_WORKSPACE_SRC')
+DEST = Path('YOUR_SHARED_ROOT/_system')
 
 SCRIPTS = [
     'project_create.py', 'ack_check.py', 'dispatch_and_check.py', 'workgroup_run.py',

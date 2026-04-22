@@ -8,11 +8,11 @@
     "writing_integration": "WRITING_PM"
   },
   "assistants": {
-    "ASSISTANT_1": {
+    "assistant_1": {
       "manager": "RESEARCH_PM",
       "tech_review_by": "TECH_LEAD"
     },
-    "ASSISTANT_2": {
+    "assistant_2": {
       "manager": "WRITING_PM",
       "tech_review_by": "TECH_LEAD"
     }

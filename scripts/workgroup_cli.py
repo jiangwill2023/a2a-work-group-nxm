@@ -10,8 +10,17 @@ import sys
 from pathlib import Path
 
 SKILL_ROOT = Path(__file__).parent.parent
-SHARED_ROOT = '/Volumes/Local Drawer/SharedProjects/'
+SETTINGS_PATH = SKILL_ROOT / 'config' / 'settings.json'
 ROLE_MAP_PATH = SKILL_ROOT / 'config' / 'team-role-map.json'
+
+
+def load_settings() -> dict:
+    if SETTINGS_PATH.exists():
+        return json.loads(SETTINGS_PATH.read_text(encoding='utf-8'))
+    return {'shared_root': 'YOUR_SHARED_ROOT'}
+
+
+SHARED_ROOT = Path(load_settings().get('shared_root', 'YOUR_SHARED_ROOT'))
 
 
 def run(args: list[str]) -> subprocess.CompletedProcess[str]:
@@ -49,9 +58,9 @@ def route_pm_owner(task_type: str, need_finance: bool) -> dict:
     finance_support = role_map.get('finance_support', []) if (need_finance or task_type in ('budget', 'finance', 'commercial')) else []
     assistants = []
     if role_key == 'research_analysis':
-        assistants = ['coder']
+        assistants = ['ASSISTANT_1']
     elif role_key == 'writing_integration':
-        assistants = ['leon']
+        assistants = ['ASSISTANT_2']
     return {
         'task_type': task_type,
         'pm_owner': pm_owner,

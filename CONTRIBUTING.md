@@ -28,7 +28,7 @@ python3 ~/.openclaw/skills/a2a-work-group-nxm/scripts/workgroup_cli.py --help
 
 ### Testing
 - Test with actual OpenClaw sessions when possible
-- Verify path handling with spaces: `/Volumes/Local Drawer/SharedProjects/`
+- Verify path handling with spaces: `YOUR_SHARED_ROOT`
 - Check ACK/BLOCKED/timeout states
 
 ### Documentation

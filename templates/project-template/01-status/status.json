@@ -1,18 +1,11 @@
 {
-  "project_name": "",
-  "project_id": "",
-  "coordinator": "qiang",
-  "pm_owner": "",
-  "pm_support": [],
-  "assistants": [],
-  "tech_lead": "tracy",
-  "finance_support": [],
+  "project_id": "<project_id>",
   "status": "planning",
-  "current_task": "",
-  "latest_output": "",
-  "latest_summary": "",
-  "blockers": [],
-  "next_action": "",
-  "updated_at": "",
-  "updated_by": ""
+  "pm_owner": "<pm_owner>",
+  "coordinator": "COORDINATOR",
+  "assistants": [],
+  "finance_support": [],
+  "tech_lead": "TECH_LEAD",
+  "current_stage": "planning",
+  "updated_by": "COORDINATOR"
 }

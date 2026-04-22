@@ -1,16 +1,16 @@
 {
   "name": "a2a-work-group-nxm",
-  "version": "1.0.0",
-  "description": "Multi-agent collaboration skill for project initialization, dispatch, ACK tracking, and long-task checkpoint management",
-  "author": "qiang",
-  "date": "2026-04-21",
-  "status": "executable",
+  "version": "1.0.1",
+  "description": "Multi-agent collaboration skill for OpenClaw: project initialization, routing, dispatch, ACK tracking, and checkpoint management",
+  "author": "OpenClaw Team",
+  "date": "2026-04-22",
+  "status": "public_ready",
   "entry": {
     "cli": "scripts/workgroup_cli.py",
     "python": "scripts/workgroup_run_auto.py"
   },
   "config": {
-    "shared_root": "/Volumes/Local Drawer/SharedProjects/",
+    "shared_root": "YOUR_SHARED_ROOT",
     "team_role_map": "config/team-role-map.json",
     "default_template": "templates/project-template",
     "path_naming_rule": "english_lowercase_only"

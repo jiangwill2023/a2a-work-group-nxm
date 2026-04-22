@@ -1,0 +1,7 @@
+{
+  "shared_root": "YOUR_SHARED_ROOT",
+  "default_template": "standard",
+  "path_naming_rule": "english_lowercase_only",
+  "authorized_senders": ["YOUR_SENDER_ID"],
+  "session_visibility": "all"
+}

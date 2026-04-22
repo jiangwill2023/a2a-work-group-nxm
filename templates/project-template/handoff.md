@@ -39,7 +39,7 @@
 - 
 
 ## important_paths
-- shared_root: `/Volumes/Local Drawer/SharedProjects/`
+- shared_root: `YOUR_SHARED_ROOT`
 - project_root:
 - latest_output:
 

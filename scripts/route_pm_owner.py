@@ -7,7 +7,7 @@ import argparse
 import json
 from pathlib import Path
 
-ROLE_MAP_PATH = Path('team-role-map.json')
+ROLE_MAP_PATH = Path('config/team-role-map.json')
 
 TASK_TYPE_TO_ROLE = {
     'technical': 'technical',
@@ -41,9 +41,9 @@ def route_pm_owner(task_type: str, need_finance_support: bool) -> dict:
     finance_support = role_map.get('finance_support', []) if need_finance_support or task_type in ('budget', 'finance', 'commercial') else []
     assistants = []
     if role_key == 'research_analysis':
-        assistants = ['coder']
+        assistants = ['ASSISTANT_1']
     elif role_key == 'writing_integration':
-        assistants = ['leon']
+        assistants = ['ASSISTANT_2']
     return {
         'task_type': task_type,
         'pm_owner': pm_owner,

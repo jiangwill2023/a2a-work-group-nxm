@@ -1,31 +1,43 @@
 # A2A Work Group NXM
 
-Multi-agent collaboration skill for OpenClaw. Supports project initialization, dispatch, ACK tracking, and long-task checkpoint management.
+Multi-agent collaboration skill for OpenClaw. Supports project initialization, routing, A2A dispatch, ACK tracking, and long-task checkpoint management.
 
 ## Overview
 
-This skill enables small teams of AI agents to collaborate on projects through:
-- **Automatic project routing** based on task type
-- **Standardized project directories** with templates
-- **A2A dispatch** with ACK/BLOCKED tracking
-- **Long-task checkpoint** management
-- **Cross-session communication** governance
+This skill helps small teams of AI agents collaborate through:
+- Automatic project routing based on task type
+- Standardized project directories with templates
+- A2A dispatch with ACK / BLOCKED / timeout / received tracking
+- Long-task checkpoint management
+- Cross-session communication governance
+
+## Public-Ready Notes
+
+This repository is the standardized public edition.
+- Real team member names have been replaced by role placeholders
+- Real sender IDs, channel IDs, and session keys have been removed
+- Machine-specific paths have been replaced with configurable placeholders
+- Example configuration files are provided in `config/*.example.json`
 
 ## Quick Start
 
 ```bash
-# Install to OpenClaw skills directory
+# install
 cp -r a2a-work-group-nxm ~/.openclaw/skills/
 
-# Create and dispatch a project
+# copy example config
+cp config/team-role-map.example.json config/team-role-map.json
+cp config/settings.example.json config/settings.json
+
+# run
 python3 ~/.openclaw/skills/a2a-work-group-nxm/scripts/workgroup_cli.py \
   --project-name "Market Research" \
   --shortname "market-research" \
-  --requester "will" \
+  --requester "USER" \
   --task-type "research" \
-  --session-key "agent:mr-library:discord:channel:YOUR_CHANNEL" \
-  --task-id "mr-20260421-01" \
-  --request-summary "Please analyze market trends and prepare a brief"
+  --session-key "agent:PM_AGENT:discord:channel:CHANNEL_ID" \
+  --task-id "task-20260422-01" \
+  --request-summary "Analyze market trends and prepare a brief"
 ```
 
 ## Features
@@ -42,7 +54,7 @@ python3 ~/.openclaw/skills/a2a-work-group-nxm/scripts/workgroup_cli.py \
 
 ### A2A Communication
 - Team broadcast and directed dispatch
-- ACK/BLOCKED/timeout/received status tracking
+- ACK / BLOCKED / timeout / received tracking
 - Retry mechanism for pending tasks
 - Multi-target dispatch support
 
@@ -54,72 +66,60 @@ python3 ~/.openclaw/skills/a2a-work-group-nxm/scripts/workgroup_cli.py \
 
 ## Directory Structure
 
-```
+```text
 a2a-work-group-nxm/
-├── skill.json              # Skill metadata
-├── SKILL.md                # Skill documentation
-├── INSTALL.md              # Installation guide
-├── LICENSE                 # MIT License
-├── README.md               # This file
+├── skill.json
+├── SKILL.md
+├── INSTALL.md
+├── LICENSE
+├── README.md
 ├── config/
-│   ├── team-role-map.json  # Team role configuration
-│   └── template-map.json   # Project template selection
+│   ├── team-role-map.example.json
+│   ├── team-role-map.json
+│   ├── settings.example.json
+│   └── template-map.json
 ├── scripts/
-│   ├── workgroup_cli.py    # Unified CLI entry
-│   ├── workgroup_run.py    # End-to-end workflow
-│   ├── project_create.py   # Project initialization
-│   ├── route_pm_owner.py   # Task routing
-│   ├── dispatch_and_check.py
-│   ├── ack_check.py
-│   ├── retry_ack.py
-│   ├── multi_dispatch.py
-│   ├── project_health_check.py
-│   ├── checkpoint_write.py
-│   └── system_deploy_sync.py
 ├── templates/
-│   └── project-template/   # Standard project template
 └── docs/
-    └── *.md                # Documentation and SOPs
 ```
+
+## Role Model
+
+Default public placeholders:
+- `COORDINATOR`
+- `TECH_PM`
+- `RESEARCH_PM`
+- `WRITING_PM`
+- `FINANCE_SUPPORT`
+- `ASSISTANT_1`
+- `ASSISTANT_2`
 
 ## Configuration
 
 ### Team Role Map
-Edit `config/team-role-map.json` to customize your team:
+Use `config/team-role-map.example.json` as your starting point.
 
-```json
-{
-  "project_managers": {
-    "technical": "tracy",
-    "research_analysis": "mr-library",
-    "writing_integration": "may"
-  },
-  "finance_support": ["steven"],
-  "tech_lead": "tracy",
-  "coordinator": "qiang"
-}
-```
-
-### Template Selection
-Choose templates via `config/template-map.json`:
-- `standard`: Full template with all governance files
-- `minimal`: Brief + status + next-step only
-- `full`: Standard + additional governance
+### Settings
+Use `config/settings.example.json` to define:
+- `shared_root`
+- default template
+- authorized senders
+- session visibility
 
 ## Task Types
 
 | Type | PM | Assistants |
-|------|-----|-----------|
-| research, materials, analysis | mr-library | coder |
-| writing, expression | may | leon |
-| technical, web, development | tracy | - |
-| budget, finance, commercial | mr-library + steven | - |
+|------|----|-----------|
+| research, materials, analysis | RESEARCH_PM | ASSISTANT_1 |
+| writing, expression | WRITING_PM | ASSISTANT_2 |
+| technical, web, development | TECH_PM | - |
+| budget, finance, commercial | RESEARCH_PM + FINANCE_SUPPORT | - |
 
 ## Requirements
 
 - Python >= 3.9
 - OpenClaw >= 2026.4.15
-- Shared project root directory (default: `/Volumes/Local Drawer/SharedProjects/`)
+- Configured shared project root
 
 ## Permissions
 
@@ -133,21 +133,16 @@ This skill requires:
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md) for version history.
+See [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 
-MIT License - see [LICENSE](LICENSE)
+MIT License - see [LICENSE](LICENSE).
 
-## Author
+## Maintainer
 
-- **WillQ** - Initial design and implementation
-- **OpenClaw Team** - Testing and feedback
-
-## Acknowledgments
-
-Built for the OpenClaw multi-agent collaboration ecosystem.
+OpenClaw Team

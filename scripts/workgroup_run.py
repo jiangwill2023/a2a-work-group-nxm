@@ -9,7 +9,16 @@ import subprocess
 import time
 from pathlib import Path
 
-SHARED_ROOT = '/Volumes/Local Drawer/SharedProjects/'
+SETTINGS_PATH = Path('config/settings.json')
+
+
+def load_settings() -> dict:
+    if SETTINGS_PATH.exists():
+        return json.loads(SETTINGS_PATH.read_text(encoding='utf-8'))
+    return {'shared_root': 'YOUR_SHARED_ROOT'}
+
+
+SHARED_ROOT = Path(load_settings().get('shared_root', 'YOUR_SHARED_ROOT'))
 
 
 def run(args: list[str]) -> subprocess.CompletedProcess[str]:
