@@ -35,7 +35,7 @@ Goal is not fixed 1:1, but supporting small team multi-role collaboration.
 - Cross-session sending fixed (root cause: `tools.allow` + `tools.sessions.visibility = all`)
 
 ### File Mainline
-- Shared root default: `/Volumes/Local Drawer/SharedProjects/`
+- Shared root default: `YOUR_SHARED_ROOT` (configure in settings.json)
 - Standard project template directories and core files
 - `project_id`, `status`, `next-step`, `decision-log`, `progress-log` rules
 - Checkpoint writing and long-task advancement supported
@@ -193,7 +193,7 @@ Should output at least:
 ## 8. Implementation Experience (As of 2026-04-21)
 
 ### Shared Root Directory
-- `/Volumes/Local Drawer/SharedProjects/`
+- `YOUR_SHARED_ROOT` (configure in settings.json)
 - Path contains spaces, all script calls must uniformly do quoted path / safe path handling
 
 ### Cross-Session Sending Fix

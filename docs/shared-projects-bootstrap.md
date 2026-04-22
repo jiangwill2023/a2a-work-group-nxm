@@ -1,7 +1,7 @@
 # shared projects bootstrap
 
 ## shared root
-- `/Volumes/Local Drawer/SharedProjects/`
+- `YOUR_SHARED_ROOT` (configure in settings.json)
 
 ## rule
 - 所有正式项目默认建立在该目录下

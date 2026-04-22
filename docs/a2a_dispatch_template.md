@@ -4,7 +4,7 @@
 project_id=<project_id>
 task_id=<task_id>
 pm_owner=<pm_owner>
-file_path=/Volumes/Local Drawer/SharedProjects/<project_id>/
+file_path=YOUR_SHARED_ROOT/<project_id>/
 request_summary=<one-line summary>
 expected_reply=ACK|BLOCKED
 

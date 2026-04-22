@@ -22,7 +22,7 @@ Build an automated team operation system with:
 - pm roles: `TECH_PM`, `RESEARCH_PM`, `WRITING_PM`
 - assistants: `ASSISTANT_1`, `ASSISTANT_2`
 - finance support: `FINANCE_SUPPORT`
-- shared root: `/Volumes/Local Drawer/SharedProjects/`
+- shared root: `YOUR_SHARED_ROOT` (configure in settings.json)
 - project_id rule: `p-YYYYMMDD-shortname`
 - path naming rule: all persisted project paths / folder names / shortnames must use english lowercase
 - required files:

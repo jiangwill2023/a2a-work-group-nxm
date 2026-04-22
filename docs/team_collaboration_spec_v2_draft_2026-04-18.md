@@ -101,7 +101,7 @@ Recommended format:
 ```text
 project_id=<project_id>
 task_id=<task_id>
-file_path=/Volumes/Local Drawer/SharedProjects/<project_id>/
+file_path=YOUR_SHARED_ROOT/<project_id>/
 Please read project files first, then execute.
 Please only reply ACK or BLOCKED.
 ```
@@ -146,7 +146,7 @@ From next project, execute in following order:
 - All agent names lowercase
 - All field names lowercase
 - Status values lowercase and limited to: `planning`, `ready`, `in_progress`, `review`, `blocked`, `done`
-- Shared root directory unique entry: `/Volumes/Local Drawer/SharedProjects/`
+- Shared root directory is user-configurable: `YOUR_SHARED_ROOT`
 - Project folder name = `project_id`
 - Chinese project names must convert to English shortname before landing
 - Formal promotion based on `00-brief/`, `01-status/`, `02-decisions/`
